@@ -1,19 +1,8 @@
-Below is an example of a GitHub README.md file for a repository introducing Kubernetes notes:
-
 ---
 
 # **Introduction to Kubernetes Notes**
 
 Welcome to the Introduction to Kubernetes Notes repository! Here you'll find comprehensive notes covering the fundamentals of Kubernetes, a powerful container orchestration platform.
-
-## **Table of Contents**
-
-- [What is Kubernetes?](https://chat.openai.com/c/b47635c4-4b15-4e01-a8c5-59108b63a019#what-is-kubernetes)
-- [Why Kubernetes?](https://chat.openai.com/c/b47635c4-4b15-4e01-a8c5-59108b63a019#why-kubernetes)
-- [Getting Started](https://chat.openai.com/c/b47635c4-4b15-4e01-a8c5-59108b63a019#getting-started)
-- [Contents](https://chat.openai.com/c/b47635c4-4b15-4e01-a8c5-59108b63a019#contents)
-- [Contributing](https://chat.openai.com/c/b47635c4-4b15-4e01-a8c5-59108b63a019#contributing)
-- [License](https://chat.openai.com/c/b47635c4-4b15-4e01-a8c5-59108b63a019#license)
 
 ## **What is Kubernetes?**
 
