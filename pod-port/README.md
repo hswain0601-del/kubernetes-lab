@@ -2,6 +2,13 @@
 
 The pod.yml manifest file defines a Kubernetes Pod named testpod4 with a single container (c00) running an Apache HTTP Server (httpd) image. The container exposes port 80, indicating that it can receive incoming network traffic on that port.
 
+1. Apply the file 
+
+    ```bash
+    kubectl apply -f pod3.yml
+    kubectl get pod testpod4
+    ```
+
 2. To view information about the Pod:
     
     ```bash
