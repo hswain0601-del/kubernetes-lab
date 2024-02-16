@@ -6,15 +6,15 @@ spec:
   replicas: 2  
   selector:                  
     matchExpressions:                             # these must match the labels
-      - {key: myname, operator: In, values: [Nishant, nishant, NISHANT]}
+      - {key: myname, operator: In, values: [Hello, hello, HELLO]}
       - {key: env, operator: NotIn, values: [production]}
   template:      
     metadata:
       name: testpod7
       labels:              
-        myname: Nishant
+        myname: Hello
     spec:
      containers:
        - name: c00
          image: ubuntu
-         command: ["/bin/bash", "-c", "while true; do echo Hello Nishant; sleep 5 ; done"]
+         command: ["/bin/bash", "-c", "while true; do echo Hello from c1; sleep 5 ; done"]
