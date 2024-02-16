@@ -5,7 +5,7 @@ The pod.yml file defines a Kubernetes Pod named environments running a single co
 1. To create or apply the Pod with environment variables, use the **`kubectl apply`** command:
     
     ```bash
-    kubectl apply -f your-pod-file.yaml
+    kubectl apply -f pod3.yml
     ```
     
 2. To view information about the Pod:
@@ -32,7 +32,7 @@ The pod.yml file defines a Kubernetes Pod named environments running a single co
     kubectl exec -it environments -c c00 -- /bin/bash
     ```
     
-6. `echo $MYNAME —> NISHANT`
+6. `echo $MYNAME —> environments`
 7. `env` —> To see all the env variables 
 8. To delete the Pod:
 
