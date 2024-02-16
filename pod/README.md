@@ -5,7 +5,7 @@ The pod.yml file defines a Kubernetes Pod named testpod running an Ubuntu contai
 - Create or apply the Pod using **`kubectl apply`**:
     
     ```bash
-    kubectl apply -f pod1.yml
+    kubectl apply -f pod.yml
     ```
     
 - View information about the Pod:
