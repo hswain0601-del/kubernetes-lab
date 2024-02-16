@@ -12,7 +12,7 @@ Now, let's go through some common commands related to ReplicaSets:
 - Create or apply the ReplicaSet using **`kubectl apply`**:
     
     ```bash
-    kubectl apply -f your-replicaset-file.yaml
+    kubectl apply -f myrs.yaml
     ```
     
 - View information about the ReplicaSet:
