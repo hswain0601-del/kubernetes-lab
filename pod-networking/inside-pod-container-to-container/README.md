@@ -8,7 +8,7 @@ Container c01 runs an Apache HTTP Server (httpd) image and exposes port 80 for i
 - **Apply the Pod:**
     
     ```bash
-    kubectl apply -f filename.yaml
+    kubectl apply -f testpod.yml
     ```
     
     This command applies the configuration in the specified YAML file (**`filename.yaml`**) to the Kubernetes cluster.
