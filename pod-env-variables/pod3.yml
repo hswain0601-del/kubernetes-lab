@@ -6,7 +6,7 @@ spec:
   containers:
     - name: c00
       image: ubuntu
-      command: ["/bin/bash", "-c", "while true; do echo Hello-Nishant; sleep 5 ; done"]
+      command: ["/bin/bash", "-c", "while true; do echo Hello from c00 container; sleep 5 ; done"]
       env:                        # List of environment variables to be used inside the pod
       - name: MYNAME
-        value: NISHANT
+        value: testpod
