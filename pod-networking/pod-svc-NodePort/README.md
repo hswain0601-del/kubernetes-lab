@@ -9,7 +9,7 @@ Use the following commands to interact with and test the deployment and service:
 1. **Apply Deployment Manifest:**
     
     ```bash
-    kubectl apply -f deployment.yml
+    kubectl apply -f deploy-httpd.yml
     ```
     
 2. **Apply Service Manifest:**
