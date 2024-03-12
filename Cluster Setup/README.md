@@ -45,7 +45,7 @@ sudo containerd config default | sudo tee /etc/containerd/config.toml
 Edit the containerd configuration file to set SystemdCgroup to true. Use the following command to open the file:
 
 ```
-sudo nano /etc/containerd/config.toml
+sudo vim /etc/containerd/config.toml
 ```
 
 Set SystemdCgroup to true:
@@ -56,15 +56,53 @@ SystemdCgroup = true
 Restart containerd:
 ```
 sudo systemctl restart containerd
+sudo snap install docker
+docker --version
 ```
 
 ## Install Kubernetes
-To install Kubernetes, use the following commands:
+To install Kubernetes, use the following official release document:
 
 ```
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-sudo apt install kubeadm kubelet kubectl kubernetes-cni
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+```
+
+## Update the apt package index and install packages needed to use the Kubernetes apt repository:
+
+```
+sudo apt-get update
+# apt-transport-https may be a dummy package; if so, you can skip that package
+sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+```
+## Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL:
+
+```
+# If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
+# sudo mkdir -p -m 755 /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+```
+
+## Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.29
+
+```
+# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+```
+
+## Update the apt package index, install kubelet, kubeadm and kubectl, and pin their version:
+
+```
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+## The kubelet is now restarting every few seconds, as it waits in a crashloop for kubeadm to tell it what to do.
+
+```
+kubectl version
+Client Version: v1.29.2
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
 ```
 
 ## Disable swap
@@ -74,9 +112,9 @@ Disable swap using the following command:
 sudo swapoff -a
 ```
 
-If there are any swap entries in the /etc/fstab file, remove them using a text editor such as nano:
+If there are any swap entries in the /etc/fstab file, remove them using a text editor such as vim:
 ```
-sudo nano /etc/fstab
+sudo vim /etc/fstab
 ```
 
 Enable kernel modules
