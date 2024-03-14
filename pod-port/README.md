@@ -40,7 +40,10 @@ The pod.yml manifest file defines a Kubernetes Pod named testpod4 with a single 
     testpod4                         1/1     Running   0               78s     10.1.0.94   docker-desktop   <none>           <none>
     ```
     
-7. `curl  10.1.0.94:80` —> We should see “It works” means port is exposed 
+7. To test port-forwarding 
+    ```bash
+    kubectl port-forward testpod4 8082:80
+    ```
 8. To delete the Pod:
     
     ```bash
