@@ -30,7 +30,7 @@ The pod.yml file defines a Kubernetes Pod named testpod3 with two containers (c0
 5. To access a shell in a specific container for troubleshooting (e.g., container **`c01`**):
     
     ```bash
-    kubectl exec -it testpod -c c01 -- /bin/bash
+    kubectl exec -it testpod -c c00 -- /bin/bash
     kubectl exec -it testpod -c c01 -- /bin/bash
     ```
     
