@@ -1,6 +1,6 @@
 **Use the following commands to interact with and test the pod.yml manifest:**
 
-The pod.yml file defines a Kubernetes Pod named testpod3 with two containers (c00 and c01), both running Ubuntu images. Each container executes a simple Bash command, echoing different messages ("Welcome Nishant" and "Hello from c00 and c01," respectively) every 5 seconds.
+The pod.yml file defines a Kubernetes Pod named testpod3 with two containers (c00 and c01), both running Ubuntu images. Each container executes a simple Bash command, echoing different messages ("Hello from c00 and c01," respectively) every 5 seconds.
 
 1. To create or apply the multi-container Pod, use the **`kubectl apply`** command:
     
