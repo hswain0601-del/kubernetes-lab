@@ -1,6 +1,6 @@
 **Use the following commands to interact with and test the pod.yml manifest:**
 
-The pod.yml file defines a Kubernetes Pod named testpod running an Ubuntu container. The container executes a simple Bash command, echoing "Hello-Nishant" every 5 seconds, with a restart policy set to "Never."
+The pod.yml file defines a Kubernetes Pod named testpod running an Ubuntu container. The container executes a simple Bash command, echoing "Hello from c00" every 5 seconds, with a restart policy set to "Never."
 
 - Create or apply the Pod using **`kubectl apply`**:
     
