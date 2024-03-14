@@ -1,6 +1,6 @@
 **Use the following commands to interact with and test the pod.yml manifest:**
 
-The pod.yml file defines a Kubernetes Pod named environments running a single container (c00) with an Ubuntu image. The container executes a simple Bash command, echoing "Hello-Nishant" every 5 seconds. Additionally, an environment variable MYNAME is set with the value "NISHANT" inside the pod.
+The pod.yml file defines a Kubernetes Pod named environments running a single container (c00) with an Ubuntu image. The container executes a simple Bash command, echoing "Hello from c00" every 5 seconds. Additionally, an environment variable MYNAME is set with the value "testpod" inside the pod.
 
 1. To create or apply the Pod with environment variables, use the **`kubectl apply`** command:
     
