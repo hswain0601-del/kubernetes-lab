@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Launch an EC2 instance -> Enable SG for All TCP Ports 
 # Update apt packages
 sudo apt-get update
 
