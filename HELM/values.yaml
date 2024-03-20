@@ -1,3 +1,4 @@
+replicaCount: 1
 image:
   repository: nishant277/getting-started
   tag: latest
