@@ -15,9 +15,15 @@ sudo apt-get update
 sudo apt-get install -y containerd.io
 sudo mkdir -p /etc/containerd
 sudo containerd config default | sudo tee /etc/containerd/config.toml
+sudo tee /etc/containerd/config.toml > /dev/null <<EOF
+# Your desired configuration options go here
+[plugins."io.containerd.grpc.v1.cri".containerd]
+  SystemdCgroup = true
+EOF
+# Restart containerd service
 sudo systemctl restart containerd
 
-# Install Docker using snap (optional)
+# Install Docker using snap 
 sudo snap install docker
 docker --version
 
@@ -43,3 +49,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Apply Flannel network plugin
 kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Documentation/kube-flannel.yml
+
+# Install Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
