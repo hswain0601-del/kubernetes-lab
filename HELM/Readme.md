@@ -15,7 +15,6 @@ To perform deployment
     
 
 To list the deployment 
-
     
     helm ls 
     
@@ -24,7 +23,10 @@ Try running all the kubectl commands
     
     kubectl get all 
     
+To forward the service 
 
+    kubectl port-forward service/bb-entrypoint 30001:3000
+    
 To uninstall the deployment 
 
     
