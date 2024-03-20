@@ -1,3 +1,8 @@
+Start minikube 
+
+    minikube start
+    minikube status
+
 To test the deployment using dry-run 
 
     
