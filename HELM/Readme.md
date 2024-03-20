@@ -1,7 +1,7 @@
 To test the deployment using dry-run 
 
     
-    kubectl apply -f your-deployment-file.yaml
+    helm install bb-release . --dry-run
 
 To perform deployment
 
