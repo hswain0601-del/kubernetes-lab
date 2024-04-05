@@ -1,6 +1,6 @@
 **Use the following commands to interact with and test the pod.yml manifest:**
 
-The pod.yml manifest file defines a Kubernetes Pod named nishant-label with labels indicating it belongs to the "development" environment and has the "pods" class. The Pod runs a single container (c00) with an Ubuntu image, executing a Bash command that continuously echoes "Hello World" every 5 seconds.
+The pod.yml manifest file defines a Kubernetes Pod named my-label with labels indicating it belongs to the "development" environment and has the "pods" class. The Pod runs a single container (c00) with an Ubuntu image, executing a Bash command that continuously echoes "Hello World" every 5 seconds.
 
 1. **Apply the Pod Manifest:**
     
@@ -16,12 +16,12 @@ The pod.yml manifest file defines a Kubernetes Pod named nishant-label with labe
     
     ```
     
-    Verify that the **`nishant-label`** Pod is in the "Running" state.
+    Verify that the **`my-label`** Pod is in the "Running" state.
     
 3. **View Pod Logs:**
     
     ```bash
-    kubectl logs nishant-label
+    kubectl logs my-label
     
     ```
     
@@ -30,7 +30,7 @@ The pod.yml manifest file defines a Kubernetes Pod named nishant-label with labe
 4. **Describe Pod:**
     
     ```bash
-    kubectl describe pod nishant-label
+    kubectl describe pod my-label
     
     ```
     
@@ -57,7 +57,7 @@ The pod.yml manifest file defines a Kubernetes Pod named nishant-label with labe
 7. **Clean Up (optional):**
     
     ```bash
-    kubectl delete pod nishant-label
+    kubectl delete pod my-label
     
     ```
     
