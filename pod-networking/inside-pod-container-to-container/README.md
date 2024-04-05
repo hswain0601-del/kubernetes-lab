@@ -2,7 +2,7 @@
 
 The pod.yml manifest file defines a Kubernetes Pod named testpod with two containers (c00 and c01).
 
-Container c00 runs an Ubuntu image and executes a Bash command that continuously echoes "Hello-Nishant" every 5 seconds.
+Container c00 runs an Ubuntu image and executes a Bash command that continuously echoes "Hello" every 5 seconds.
 Container c01 runs an Apache HTTP Server (httpd) image and exposes port 80 for incoming network traffic.
 
 - **Apply the Pod:**
