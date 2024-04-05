@@ -2,9 +2,9 @@
 
 The pod.yml manifest file defines a Kubernetes ReplicationController named myreplica with a desired replica count of 2. The ReplicationController manages Pods based on a specified selector and template.
 
-Selector: The ReplicationController selects Pods with the label myname: Nishant.
+Selector: The ReplicationController selects Pods with the label myname: replica-label.
 
-Template: Each managed Pod created by the ReplicationController is named testpod6 and has the label myname: Nishant. The Pod runs a single container (c00) with an Ubuntu image, executing a Bash command that continuously echoes "Hello-Nishant" every 5 seconds.
+Template: Each managed Pod created by the ReplicationController is named testpod6 and has the label myname: replica-label. The Pod runs a single container (c00) with an Ubuntu image, executing a Bash command that continuously echoes "replica-label" every 5 seconds.
 
 The ReplicationController ensures that there are always two Pods matching the specified selector and template running in the cluster. If a Pod fails or is deleted, the ReplicationController creates a new one to maintain the desired replica count.
 
