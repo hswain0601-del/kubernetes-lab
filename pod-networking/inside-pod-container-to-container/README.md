@@ -45,12 +45,6 @@ Container c01 runs an Apache HTTP Server (httpd) image and exposes port 80 for i
     
     This command forwards local port 8080 to port 80 in the **`testpod`** Pod, allowing you to access the Apache HTTP Server running in the second container locally at **`http://localhost:8080`**.
     
-    - check inside the container
-    - `kubectl exec testpod -it -c c00 -- /bin/bash`
-    - `apt-get update && apt-get install curl -y`
-    
-    curl localhost:80
-    <html><body><h1>It works!</h1></body></html>
     
 - **Delete Pod:**
     
