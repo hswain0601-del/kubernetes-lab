@@ -6,7 +6,7 @@ spec:
   containers:
   - name: c1
     image: centos
-    command: ["/bin/bash", "-c", "while true; do echo Hello-from-nishant; sleep 5 ; done"]
+    command: ["/bin/bash", "-c", "while true; do echo Hello; sleep 5 ; done"]
     env:
     - name: MYENV         # env name in which value of the key is stored
       valueFrom:
