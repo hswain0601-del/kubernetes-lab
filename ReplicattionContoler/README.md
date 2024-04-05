@@ -28,7 +28,7 @@ The ReplicationController ensures that there are always two Pods matching the sp
     kubectl get pods
     ```
     
-    Verify that there are two Pods with the name **`testpod6`** and the label **`myname: Nishant`** running.
+    Verify that there are two Pods with the name **`testpod6`** and the label **`myname: replica-label`** running.
     
 4. **View Pod Logs:**
     
@@ -36,7 +36,7 @@ The ReplicationController ensures that there are always two Pods matching the sp
     kubectl logs <pod-name>
     ```
     
-    Check the logs of one of the Pods to see the "Hello-Nishant" messages. Press **`Ctrl + C`** to exit.
+    Check the logs of one of the Pods to see the "replica-label" messages. Press **`Ctrl + C`** to exit.
     
 5. **Scale ReplicationController (optional):**
     
