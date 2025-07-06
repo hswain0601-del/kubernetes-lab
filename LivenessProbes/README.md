@@ -1,3 +1,7 @@
+Liveness probes determine when to restart a container. For example, liveness probes could catch a deadlock when an application is running but unable to make progress.
+
+If a container fails its liveness probe repeatedly, the kubelet restarts the container.
+
 This setup essentially checks whether the file "/tmp/healthy" exists inside the container. If it does, the container is considered healthy; otherwise, it's marked as unhealthy.
 
 To test the liveness probe for the provided Pod manifest, follow these steps:
