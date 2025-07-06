@@ -1,15 +1,17 @@
 1. **Create a Secret File:**
     
-    Create a file named **`mysecret.yaml`** 
+    Create a file name **`mysecret.yaml`** and then encode the secrets and put it in the file:
+    ```
+    echo "username" | base64
+    ```
+     ```
+    echo "password" | base64
+    ```
     
     To decode the base64-encoded values of **`username`** and **`password`** in a Secret, you can use the following commands in a Unix-like shell (such as Bash):
     
     For **`username`**:
-```
-echo "admin" | base64
-```
 
-    
     ```bash
     echo "dXNlcm5hbWU=" | base64 --decode
     ```
@@ -19,6 +21,7 @@ echo "admin" | base64
     ```bash
     echo "cGFzc3dvcmQ=" | base64 --decode
     ```
+    
     
 3. **Create the Secret:**
     
