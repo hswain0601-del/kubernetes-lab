@@ -5,6 +5,10 @@
     To decode the base64-encoded values of **`username`** and **`password`** in a Secret, you can use the following commands in a Unix-like shell (such as Bash):
     
     For **`username`**:
+```
+echo "admin" | base64
+```
+
     
     ```bash
     echo "dXNlcm5hbWU=" | base64 --decode
@@ -16,7 +20,7 @@
     echo "cGFzc3dvcmQ=" | base64 --decode
     ```
     
-2. **Create the Secret:**
+3. **Create the Secret:**
     
     Run the following command to create the Secret:
     
@@ -24,7 +28,7 @@
     kubectl apply -f mysecret.yaml
     ```
     
-3. **Create the Pod:**
+4. **Create the Pod:**
     
     Use the **`myvolsecret`** Pod manifest:
     
@@ -32,7 +36,7 @@
     kubectl apply -f myvolsecret.yaml
     ```
     
-4. **Verify Pod Creation:**
+5. **Verify Pod Creation:**
     
     Ensure that the Pod has been created:
     
@@ -40,13 +44,13 @@
     kubectl get pods
     ```
     
-5. **Exec into the Pod:**
+6. **Exec into the Pod:**
     
     ```bash
     kubectl exec myvolsecret -it -- /bin/bash
     ```
     
-6. **Inside the Pod (`ls` command):**
+7. **Inside the Pod (`ls` command):**
     
     Once inside the Pod, navigate to the mount path and list the contents:
     
