@@ -25,7 +25,7 @@ metadata:
 spec:
   containers:
   - name: c1
-    image: centos
+    image: ubuntu
     command: ["/bin/bash", "-c", "while true; do echo Hello-World; sleep 5 ; done"]
     volumeMounts:
       - name: testconfigmap
