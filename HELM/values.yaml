@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: nishant277/getting-started
+  repository: amigosnishant/getting-started
   tag: latest
   pullPolicy: IfNotPresent
 
