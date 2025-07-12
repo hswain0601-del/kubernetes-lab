@@ -6,7 +6,7 @@ image:
 
 service:
   name: bb-entrypoint
-  type: NodePort
+  type: LoadBalancer
   port: 3000
   targetPort: 3000
   nodePort: 30001
