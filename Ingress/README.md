@@ -1,5 +1,7 @@
-NGINX Ingress is a gateway that lets you expose internal Kubernetes services to the outside world using HTTP/HTTPS.
+## Prerequisite:
+> An EKS Cluster setup
 
+NGINX Ingress is a gateway that lets you expose internal Kubernetes services to the outside world using HTTP/HTTPS.
 
 Create ingress-nginx Namespace
 ```
