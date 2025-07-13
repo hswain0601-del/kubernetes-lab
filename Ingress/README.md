@@ -18,7 +18,7 @@ kubectl get svc -n ingress-nginx
 Deploy the app , service and ingress:
 
 ```
-kubectl apply -f app.yml
+kubectl apply -f deploy.yml
 kubectl apply -f service.yml
 kubectl apply -f ingress.yml
 ```
