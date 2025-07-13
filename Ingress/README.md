@@ -22,4 +22,8 @@ kubectl apply -f deploy.yml
 kubectl apply -f service.yml
 kubectl apply -f ingress.yml
 ```
+Use curl with Host header:
+```
+curl -H "Host: hello.eks.local" http://<elb-dns-name>
+```
 
