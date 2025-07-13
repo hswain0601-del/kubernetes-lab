@@ -1,7 +1,8 @@
 NGINX Ingress is a gateway that lets you expose internal Kubernetes services to the outside world using HTTP/HTTPS.
 
-```
+
 Create ingress-nginx Namespace
+```
 kubectl create namespace ingress-nginx
 ```
 Install NGINX Ingress Controller for AWS (via manifest)
@@ -14,5 +15,11 @@ check the service:
 ```
 kubectl get svc -n ingress-nginx
 ```
+Deploy the app , service and ingress:
 
-check th
+```
+kubectl apply -f app.yml
+kubectl apply -f service.yml
+kubectl apply -f ingress.yml
+```
+
