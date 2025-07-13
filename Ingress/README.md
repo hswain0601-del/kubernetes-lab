@@ -26,4 +26,10 @@ Use curl with Host header:
 ```
 curl -H "Host: hello.eks.local" http://<elb-dns-name>
 ```
-
+Access in browser using ELB DNS.
+Delete resoruces:
+```
+kubectl delete -f deploy.yml
+kubectl delete -f service.yml
+kubectl delete -f ingress.yml
+```
