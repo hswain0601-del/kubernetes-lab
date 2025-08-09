@@ -1,20 +1,20 @@
-kind: ReplicaSet                                    
+kind: ReplicaSet           # obejct name replicaset                         
 apiVersion: apps/v1                            
 metadata:
-  name: myrs
-spec:
+  name: myrs             #replica set name
+spec:  # replicaset specifications
   replicas: 2  
   selector:                  
     matchExpressions:                             # these must match the labels
       - {key: myname, operator: In, values: [Hello, hello, HELLO]}
       - {key: env, operator: NotIn, values: [production]}
-  template:      
+  template:    # pod template  
     metadata:
-      name: testpod7
+      name: testpod7 # pod name
       labels:              
-        myname: Hello
-    spec:
+        myname: Hello  # podlabel
+    spec:   #pod specification
      containers:
-       - name: c00
-         image: ubuntu
+       - name: c00 #container name
+         image: ubuntu  #image name
          command: ["/bin/bash", "-c", "while true; do echo Hello from c1; sleep 5 ; done"]
