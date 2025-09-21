@@ -1,7 +1,8 @@
 kind: Pod                              
 apiVersion: v1                     
 metadata:                           
-  name: testpod                  
+  name: testpod
+  namespace: development
 spec:                                    
   containers:                      
     - name: c00                     
