@@ -1,12 +1,19 @@
-replicaCount: 1
-image:
-  repository: amigosnishant/getting-started
-  tag: latest
-  pullPolicy: IfNotPresent
+backend:
+  image: amigosnishant/backend:latest
+  replicas: 1
+  port: 5000
+  env:
+    MONGODB_URI: "mongodb://mongo-service:27017/wanderlust"
 
-service:
-  name: bb-entrypoint
-  type: LoadBalancer
-  port: 3000
-  targetPort: 3000
-  nodePort: 30001
+frontend:
+  image: amigosnishant/frontend
+  replicas: 1
+  port: 5173
+  env:
+    VITE_API_PATH: "http://backend:5000"
+
+mongo:
+  image: mongo
+  replicas: 1
+  port: 27017
+

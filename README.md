@@ -1,29 +1,117 @@
----
+# Wanderlust - Your Ultimate Travel Blog 🌍✈️
 
-# **Introduction to Kubernetes Notes**
+WanderLust is a MERN travel blog website ✈ This project is aimed to learn DevOps, upskill in Kubernetes and Monitoring.
 
-Welcome to the Introduction to Kubernetes Notes repository! Here you'll find comprehensive notes covering the fundamentals of Kubernetes, a powerful container orchestration platform.
+![Preview Image](https://github.com/krishnaacharyaa/wanderlust/assets/116620586/17ba9da6-225f-481d-87c0-5d5a010a9538)
 
-## **What is Kubernetes?**
+## [Figma Design File](https://www.figma.com/file/zqNcWGGKBo5Q2TwwVgR6G5/WanderLust--A-Travel-Blog-App?type=design&node-id=0%3A1&mode=design&t=c4oCG8N1Fjf7pxTt-1)
 
-Kubernetes, commonly referred to as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a robust infrastructure for deploying and managing containerized workloads, making it easier to manage complex, distributed systems at scale.
+## Setting up the project locally
 
-## **Why Kubernetes?**
+### Setting up the Backend
 
-- **Scalability**: Kubernetes enables you to scale your applications seamlessly, both horizontally and vertically, to accommodate changing workload demands.
-- **High Availability**: Kubernetes ensures high availability by automatically detecting and replacing failed containers or nodes.
-- **Portability**: Kubernetes provides a consistent environment for deploying applications across different infrastructure environments, including on-premises data centers, public clouds, and hybrid clouds.
-- **Resource Efficiency**: Kubernetes optimizes resource utilization by efficiently scheduling containers on available compute resources.
-- **Automated Operations**: Kubernetes automates various aspects of application management, including deployment, scaling, updates, and rollbacks, reducing manual intervention and operational overhead.
+1. **Clone the Repository**
 
-## **Getting Started**
+   ```bash
+   git clone https://github.com/{your-username}/wanderlust.git
+   ```
 
-To get started with Kubernetes, follow these steps:
+2. **Navigate to the Backend Directory**
 
-1. **Install Kubernetes**: Set up a Kubernetes cluster on your local machine or a cloud provider. You can use tools like Minikube, kubeadm, or managed Kubernetes services provided by cloud providers like Google Kubernetes Engine (GKE), Amazon Elastic Kubernetes Service (EKS), or Microsoft Azure Kubernetes Service (AKS).
-2. **Learn Kubernetes Concepts**: Familiarize yourself with key Kubernetes concepts such as Pods, Deployments, Services, ConfigMaps, Secrets, and more. These concepts form the building blocks of Kubernetes applications and are essential for understanding how Kubernetes orchestrates containerized workloads.
-3. **Explore Kubernetes Resources**: Dive into the Kubernetes ecosystem by exploring additional resources such as official documentation, tutorials, blogs, and community forums. Join Kubernetes meetups or online communities to connect with other practitioners and share knowledge and experiences.
+   ```bash
+   cd backend
+   ```
 
-## **License**
+3. **Install Required Dependencies**
 
-This repository is licensed under the MIT License. You are free to use, modify, and distribute the content in this repository for personal or commercial purposes. See the LICENSE file for more details.
+   ```bash
+   npm i
+   ```
+
+4. **Set up your MongoDB Database**
+
+   - Open MongoDB Compass and connect MongoDB locally at `mongodb://localhost:27017`.
+
+5. **Import sample data**
+
+   > To populate the database with sample posts, you can copy the content from the `backend/data/sample_posts.json` file and insert it as a document in the `wanderlust/posts` collection in your local MongoDB database using either MongoDB Compass or `mongoimport`.
+
+   ```bash
+   mongoimport --db wanderlust --collection posts --file ./data/sample_posts.json --jsonArray
+   ```
+
+6. **Configure Environment Variables**
+
+   ```bash
+   cp .env.sample .env
+   ```
+
+7. **Start the Backend Server**
+
+   ```bash
+   npm start
+   ```
+
+   > You should see the following on your terminal output on successful setup.
+   >
+   > ```bash
+   > [BACKEND] Server is running on port 5000
+   > [BACKEND] Database connected: mongodb://127.0.0.1/wanderlust
+   > ```
+
+### Setting up the Frontend
+
+1. **Open a New Terminal**
+
+   ```bash
+   cd frontend
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm i
+   ```
+
+3. **Configure Environment Variables**
+
+   ```bash
+   cp .env.sample .env.local
+   ```
+
+4. **Launch the Development Server**
+
+   ```bash
+   npm run dev
+   ```
+
+### Setting up with Docker
+
+1.  **Ensure Docker and Docker Compose are Installed**
+    
+2.  **Clone the Repository**
+    
+    ``` bash
+    git clone https://github.com/{your-username}/wanderlust.git
+    ``` 
+3.  **Navigate to the Project Directory**
+     
+     ```bash
+    
+     cd wanderlust
+    
+     ```
+4.  **Update Environment Variables**  - If you anticipate the IP address of the instance might change, update the `.env.sample` file with the new IP address.
+
+5.  **Run Docker Compose**
+    
+    ```bash
+    
+    docker-compose up
+    ```
+    This command will build the Docker images and start the containers for the backend and frontend, enabling you to access the Wanderlust application.
+
+6.  Extract data from the sample command
+    ```bash
+    docker exec -it mongo mongoimport --db wanderlust --collection posts --file ./data/sample_posts.json --jsonArray
+    ```
