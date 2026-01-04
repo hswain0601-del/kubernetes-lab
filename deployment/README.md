@@ -28,16 +28,58 @@ Now, let's go through some common commands related to Deployments:
     kubectl describe deployment mydeployments
     ```
     
-- Scale the Deployment to a different number of replicas (e.g., 3):
-    
+- Rolling Update Test - Break the image
     ```bash
-    kubectl scale deployment mydeployments --replicas=3
+    kubectl set image deployment/mydeployments app=ubint
     ```
-    
-- Trigger a rolling update to a new version by modifying the Pod template or image and applying the changes:
-    
+
+- Watch pods
     ```bash
-    kubectl apply -f your-updated-deployment-file.yaml
+    kubectl get pods -w
     ```
-    
-- Roll back to a previous version if issues arise during an update:
+
+**Observed behavior**
+- 2 pods → Running
+- 1 pod → ErrImagePull
+- But Application keeps running
+- And image does NOT cause downtime
+
+**Check rollout status**
+  ```bash
+    kubectl rollout status deployment mydeployments
+  ```
+
+**Output:**
+```bash
+Waiting for deployment "mydeployments" rollout to finish: 2 of 3 updated replicas are available
+```
+
+- Rollout is safely paused
+
+**Fix & Rollback** - Fix image
+```bash
+kubectl edit deployment mydeployments
+```
+
+- Change to a valid image:
+```bash
+image: ubuntu
+```
+- Verify rollout history
+```bash 
+kubectl rollout history deployment mydeployments
+REVISION  CHANGE-CAUSE
+1
+2
+```
+
+- Rollback to previous version from 2 to 1
+```bash
+kubectl rollout undo deployment mydeployments
+```
+**Result:**
+
+- 3 pods → Running
+- **replicas: 3** - Ensures high availability & App stays live even if 1 pod fails
+- **maxSurge: 1** - Allows 1 extra pod during update & New pod is created before old pod is deleted
+- **maxUnavailable: 0** - Zero downtime guarantee & Old pods are deleted only after new pod is Ready also broken images or any configs do not affect LIVE traffic
