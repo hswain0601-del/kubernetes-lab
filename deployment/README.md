@@ -35,11 +35,16 @@ Now, let's go through some common commands related to Deployments:
 
 - Watch pods
     ```bash
-    kubectl get pods -w
+    kubectl get pods   
+    NAME                            READY   STATUS             RESTARTS      AGE
+    mydeployments-c77c895c9-rrvzk   0/1     ImagePullBackOff   0             9s
+    mydeployments-fccc8cd48-46jqs   1/1     Running            0             29m
+    mydeployments-fccc8cd48-52bmw   1/1     Running            0             29m
+    mydeployments-fccc8cd48-hj4lg   1/1     Running            0             29m
     ```
 
 **Observed behavior**
-- 2 pods → Running
+- 3 pods → Running
 - 1 pod → ErrImagePull
 - But Application keeps running
 - And image does NOT cause downtime
