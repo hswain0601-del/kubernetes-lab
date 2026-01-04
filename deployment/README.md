@@ -28,7 +28,7 @@ Now, let's go through some common commands related to Deployments:
     kubectl describe deployment mydeployments
     ```
     
-- Rolling Update Test - Break the image
+- Rolling Update Test - Break the image eg: **"ubuntu" to "ubunt"**
     ```bash
     kubectl edit deployment mydeployments
     ```
@@ -49,19 +49,13 @@ Now, let's go through some common commands related to Deployments:
 - But Application keeps running
 - And image does NOT cause downtime
 
-**Check rollout status**
+**Check rollout status** - It menas rollout is safe because one pod is not healthy 
   ```bash
     kubectl rollout status deployment mydeployments
+    Waiting for deployment "mydeployments" rollout to finish: 1 out of 3 new replicas have been updated...
   ```
 
-**Output:**
-```bash
-Waiting for deployment "mydeployments" rollout to finish: 2 of 3 updated replicas are available
-```
-
-- Rollout is safely paused
-
-**Fix & Rollback** - Fix image
+**Fix & Rollback** - Fix image from **"ubunt" to "ubuntu"**
 ```bash
 kubectl edit deployment mydeployments
 ```
