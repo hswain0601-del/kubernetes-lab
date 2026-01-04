@@ -30,7 +30,7 @@ Now, let's go through some common commands related to Deployments:
     
 - Rolling Update Test - Break the image
     ```bash
-    kubectl set image deployment/mydeployments app=ubint
+    kubectl edit deployment mydeployments
     ```
 
 - Watch pods
