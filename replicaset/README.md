@@ -32,10 +32,16 @@ Now, let's go through some common commands related to ReplicaSets:
     ```bash
     kubectl scale replicaset myrs --replicas=3
     ```
+
+- We can manually try deeting a pod and on the same time monitor the autoscaling behaviour by rs:
+    
+    ```bash
+    kubectl delete pod nginx-rs
+    kubectl get pods -w
+    ```
     
 - Delete the ReplicaSet:
     
     ```bash
     kubectl delete replicaset myrs
     ```
-    
