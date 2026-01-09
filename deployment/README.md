@@ -13,7 +13,7 @@ Now, let's go through some common commands related to Deployments:
 - Create or apply the Deployment using **`kubectl apply`**:
     
     ```bash
-    kubectl apply -f your-deployment-file.yaml
+    kubectl apply -f deploy.yaml
     ```
     
 - View information about the Deployment:
