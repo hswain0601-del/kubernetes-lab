@@ -65,6 +65,10 @@ To test the liveness probe for the provided Pod manifest, follow these steps:
         
         ```bash
         kubectl describe pod mylivenessprobe
+        initialDelaySeconds – when to start checking
+        periodSeconds – how often to check
+        timeoutSeconds – how long to wait
+        Liveness probe failure → container restart
         ```
         
         See the events LivenessProbes failed 

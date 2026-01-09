@@ -1,12 +1,22 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name }}
+  name: {{ include "todo.fullname" . }}
 spec:
-  type: {{ .Values.service.type }}
+  type: NodePort
   selector:
-    bb: web
+    app: {{ include "todo.name" . }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-      nodePort: {{ .Values.service.nodePort }}
+  - port: 80
+    targetPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo.fullname" . }}-mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+  - port: 3306

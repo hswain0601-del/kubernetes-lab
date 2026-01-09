@@ -1,4 +1,7 @@
-{{/* templates/_helpers.tpl */}}
-{{- define "my-chart.fullname" -}}
-{{- printf "%s-%s" .Release.Name .Chart.Name -}}
-{{- end -}}
+{{- define "todo.name" -}}
+todo-app
+{{- end }}
+
+{{- define "todo.fullname" -}}
+{{ .Release.Name }}-todo
+{{- end }}

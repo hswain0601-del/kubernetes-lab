@@ -1,19 +1,22 @@
-backend:
-  image: amigosnishant/backend:latest
-  replicas: 1
-  port: 5000
-  env:
-    MONGODB_URI: "mongodb://mongo-service:27017/wanderlust"
+replicaCount: 1
 
-frontend:
-  image: amigosnishant/frontend
-  replicas: 1
-  port: 5173
-  env:
-    VITE_API_PATH: "http://backend:5000"
+todoApp:
+  image: amigosnishant/getting-started:latest
+  port: 3000
 
-mongo:
-  image: mongo
-  replicas: 1
-  port: 27017
+nginx:
+  image: nginx:alpine
 
+mysql:
+  image: mysql:8.0
+  database: dG9kb3M=      
+  storage: 1Gi
+
+auth:
+  username: YWRtaW4=        
+  password: YWRtaW4xMjM=   
+
+db:
+  user: cm9vdA==            
+  password: c2VjcmV0
+  name: todos        

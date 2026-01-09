@@ -3,10 +3,9 @@ kind: Deployment
 metadata:
   name: pvdeploy
 spec:
-  replicas: 1
-  selector:      # tells the controller which pods to watch/belong to
+  selector:
     matchLabels:
-     app: mypv
+      app: mypv
   template:
     metadata:
       labels:
@@ -14,12 +13,13 @@ spec:
     spec:
       containers:
       - name: shell
-        image: centos
+        image: ubuntu:latest
         command: ["bin/bash", "-c", "sleep 10000"]
         volumeMounts:
         - name: mypd
           mountPath: "/tmp/persistent"
       volumes:
-        - name: mypd
-          persistentVolumeClaim:
-            claimName: myebsvolclaim
+      - name: mypd
+        persistentVolumeClaim:
+          claimName: myhostpathvolclaim
+

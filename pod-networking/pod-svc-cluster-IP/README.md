@@ -7,7 +7,7 @@ This Service, named demoservice, exposes port 80 internally (ClusterIP type). It
 1. **Check Pods:**
     
     ```bash
-    kubectl apply -f deploy-http.yml
+    kubectl apply -f deploy-httpd.yml
     ```
     
 2. **Check Deployments:**

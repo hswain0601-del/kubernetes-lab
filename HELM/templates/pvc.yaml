@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: myebsvolclaim
+  name: {{ include "todo.fullname" . }}-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: {{ .Values.mysql.storage }}
+  storageClassName: hostpath

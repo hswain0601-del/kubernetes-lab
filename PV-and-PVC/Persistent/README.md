@@ -25,7 +25,7 @@ This Deployment creates a pod running a CentOS container that sleeps for a long 
 3. **Apply Deployment:**
     
     ```bash
-    kubectl apply -f deployment.yaml
+    kubectl apply -f deploy.yaml
     ```
     
 4. **Verify Deployment:**
@@ -50,7 +50,7 @@ This Deployment creates a pod running a CentOS container that sleeps for a long 
     
     ```
     cd /tmp/persistent
-    vi test.txt --> Hello
+    touch test.txt
     exit
     ```
     
@@ -87,7 +87,14 @@ You can create a new pod with the same volume specification or a similar one.
 ```bash
 cd /tmp/hostpath
 ls --> we should see test.txt
-cat test.txt --> Hello
 ```
 
-In Docker Desktop for Mac/Windows, the **`hostPath`** provisioner for Persistent Volumes uses the local file system of your Mac/Windows as the storage backend. By default, the paths are created under the Docker VM's file system. But in AWS we have mountpath in EBS Driver so we
+5. Cleanup everything:
+
+```bash
+kubectl delete deployment pvdeploy
+kubectl delete pvc myhostpathvolclaim
+kubectl delete pv <pv-name>
+```
+
+In Docker Desktop for Mac/Windows, the **`hostPath`** provisioner for Persistent Volumes uses the local file system of your Mac/Windows as the storage backend. By default, the paths are created under the Docker VM's file system.

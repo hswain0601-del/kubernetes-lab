@@ -1,20 +1,61 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
-  labels:
-    {{- include "bb-chart.labels" . | nindent 4 }}
+  name: {{ include "todo.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "bb-chart.selectorLabels" . | nindent 8 }}
+      app: {{ include "todo.name" . }}
   template:
     metadata:
       labels:
-        {{- include "bb-chart.selectorLabels" . | nindent 12 }}
+        app: {{ include "todo.name" . }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+      # 🔵 NGINX
+      - name: nginx
+        image: {{ .Values.nginx.image }}
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        - name: auth
+          mountPath: /etc/nginx/.htpasswd
+          subPath: .htpasswd
+
+      # 🟢 TODO APP
+      - name: todo-app
+        image: {{ .Values.todoApp.image }}
+        ports:
+        - containerPort: {{ .Values.todoApp.port }}
+        command: ["sh","-c","yarn install && yarn run dev --host 0.0.0.0"]
+        env:
+        - name: MYSQL_HOST
+          value: {{ include "todo.fullname" . }}-mysql
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "todo.fullname" . }}-secret
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "todo.fullname" . }}-secret
+              key: MYSQL_PASSWORD
+        - name: MYSQL_DB
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "todo.fullname" . }}-secret
+              key: MYSQL_DATABASE
+
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: {{ include "todo.fullname" . }}-nginx-config
+      - name: auth
+        secret:
+          secretName: {{ include "todo.fullname" . }}-basic-auth

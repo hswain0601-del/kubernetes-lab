@@ -1,12 +1,6 @@
-# Helm Chart for Three-Tier Application
+# Helm Chart for getting-started Application
 
-This Helm chart provides a simple way to deploy a three-tier application consisting of a frontend, backend, and database. It is designed to be modular, allowing customization for various application needs.
-
-## Architecture
-
-1. **Frontend**: A web-based user interface.
-2. **Backend**: An API or business logic layer.
-3. **Database**: A persistent storage layer.
+This Helm chart provides a simple way to deploy a NodeJS application.
 
 ## Prerequisites
 
@@ -19,8 +13,8 @@ This Helm chart provides a simple way to deploy a three-tier application consist
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/DevOps-Playbbok/MERN-Stack-Application
-cd Helm
+git clone https://github.com/DevOps-Playbbok/Kubernetes-Lab
+cd HELM/
 ```
 
 ### Test the Chart in debug mode
@@ -40,68 +34,29 @@ helm upgrade --install wanderlast .
 ```
 
 
-## Configuration
+## Check resources
 
-The following values can be overridden in the `values.yaml` file or passed as `--set` parameters during installation.
-
-### Global Values
-
-| Parameter                  | Description                         |
-|----------------------------|-------------------------------------|
-| `replicaCount`             | Number of replicas for each tier   |
-| `imagePullSecrets`         | Secrets for pulling images         |
-| `nodeSelector`             | Node selector configuration        |
-| `tolerations`              | Toleration configuration           |
-| `affinity`                 | Affinity rules                     |
-
-### Frontend Values
-
-| Parameter                  | Description                         |
-|----------------------------|-------------------------------------|
-| `frontend.image.repository`| Frontend image repository           |
-| `frontend.image.tag`       | Frontend image tag                  |
-| `frontend.service.type`    | Service type for frontend           |
-| `frontend.service.port`    | Service port for frontend           |
-
-### Backend Values
-
-| Parameter                  | Description                         |
-|----------------------------|-------------------------------------|
-| `backend.image.repository` | Backend image repository            |
-| `backend.image.tag`        | Backend image tag                   |
-| `backend.service.type`     | Service type for backend            |
-| `backend.service.port`     | Service port for backend            |
-
-### Database Values
-
-| Parameter                  | Description                         |
-|----------------------------|-------------------------------------|
-| `database.image.repository`| Database image repository           |
-| `database.image.tag`       | Database image tag                  |
-| `database.service.type`    | Service type for database           |
-| `database.service.port`    | Service port for database           |
-| `database.persistentVolume.enabled` | Enable persistent storage  |
-| `database.persistentVolume.size`    | Size of persistent volume  |
-
-## Usage
-
-### Access the Frontend
-
-To access the frontend, retrieve the service's LoadBalancer:
-
+1. Check all the objects created:
+```bash
+kubectl get all
+kubectl get pv,pvc,cm,secrets
+```
+2. Get the NodePort port and test the App Frontend
 ```bash
 kubectl get svc 
+kubectl get secret todo-todo-basic-auth -o yaml
 ```
 
-### Logs
-
-You can view the logs for each tier by running:
-
+3. Decode the username and password 
 ```bash
-kubectl logs -l app.kubernetes.io/name=frontend
-kubectl logs -l app.kubernetes.io/name=backend
-kubectl logs -l app.kubernetes.io/name=database
+echo "YWRtaW46e1BMQUlOfWFkbWluMTIz" | base64 --decode
 ```
+
+4. Login to frontend via NGINX and proxies the request to Backend NodeJS 
+```bash
+http://localhost:<NodePort>
+```
+
 
 ## Cleanup
 
@@ -109,6 +64,37 @@ To uninstall the Helm chart:
 
 ```bash
 helm uninstall wanderlast
+```
+
+## Additional Labs
+
+🗄️ Database Management - Since the database is running inside the cluster, we can interact with it using kubectl exec.
+
+1. Connect to MySQL Shell
+Find your MySQL pod name and run:
+
+```bash
+kubectl exec -it <mysql-pod-name> -- mysql -u root -p
+```
+When prompted for a password, use the one defined in our values.yaml (default: secret).
+
+2. View and Add Data - Once inside the MySQL shell:
+
+- Select the Database:
+
+```bash
+USE todos;
+```
+- Check existing tables:
+
+```bash
+SHOW TABLES;
+```
+
+- Add a manual entry - any items from the frontend
+
+```bash
+SELECT * FROM todos;
 ```
 
 ## License
