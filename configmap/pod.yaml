@@ -19,6 +19,6 @@ spec:
     - name: testconfigmap
       mountPath: /tmp/config
   volumes:                                 # Create a volume named testconfigmap and the volume’s source is a ConfigMap "mymap"
-  - name: testconfigmap
+  - name: testconfigmap                    # NOTE - Use ConfigMaps for configuration and PVCs for data - means, a ConfigMap can be mounted as a volume, but it is not persistent storage, it is meant only for configuration data, data is managed by Kubernetes and deleted when pod is deleted 
     configMap:
       name: mymap
