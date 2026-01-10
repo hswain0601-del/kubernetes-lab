@@ -17,9 +17,8 @@ spec:
         command: ["bin/bash", "-c", "sleep 10000"]
         volumeMounts:
         - name: mypd
-          mountPath: "/tmp/persistent"
+          mountPath: "/tmp/persistent"      # Mounts a volume inside the ubuntu container - /tmp/persistent
       volumes:
       - name: mypd
         persistentVolumeClaim:
-          claimName: myhostpathvolclaim
-
+          claimName: myhostpathvolclaim     #  Defines the volume source and uses PVC: myhostpathvolclaim, PVC is already bound to a PV
