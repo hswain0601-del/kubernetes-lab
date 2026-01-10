@@ -4,10 +4,9 @@ metadata:
   name: myhostpathvol
 spec:
   capacity:
-    storage: 1Gi
-  accessModes:
+    storage: 1Gi        # Total storage size of the volume, please note - PVC must request ≤ 1Gi to bind
+  accessModes:          # Volume can be Mounted as read-write by only one node at a time 
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
+  persistentVolumeReclaimPolicy: Recycle   # Deletes data, makes PV reusable again. 
   hostPath:
-    path: "/tmp/myhostpathvol"
-
+    path: "/tmp/myhostpathvol"             # Storage comes from node’s local filesystem - directory on the worker node - /tmp/myhostpathvol
