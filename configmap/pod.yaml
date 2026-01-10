@@ -11,14 +11,14 @@ spec:
       - -c
       - |
         while true; do
-          echo "===== CONFIG FILE ====="
+          echo "CONFIG FILE"
           cat /tmp/config/sample.conf
           sleep 5
         done
-    volumeMounts:
+    volumeMounts:                          # Mount the volume testconfigmap inside the container at - /tmp/config
     - name: testconfigmap
       mountPath: /tmp/config
-  volumes:
+  volumes:                                 # Create a volume named testconfigmap and the volume’s source is a ConfigMap "mymap"
   - name: testconfigmap
     configMap:
       name: mymap
