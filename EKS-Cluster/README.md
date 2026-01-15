@@ -1,4 +1,4 @@
-# Create EKS on AWS using Terraform.
+# Create EKS on AWS using Terraform
 
 ### EKS Architecture:
 <img width="874" alt="Screenshot 2025-07-10 at 1 36 39 PM" src="https://github.com/user-attachments/assets/cf80f42b-ac60-4065-8237-e46ebdb60e49" />
@@ -75,4 +75,5 @@ aws eks describe-cluster --name project --region ap-south-1 --query "cluster.ver
 kubectl patch ingress ingress -n default -p '{"metadata":{"finalizers":[]}}' --type=merge
 terraform destroy
 ```
+
 
