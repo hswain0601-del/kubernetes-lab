@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "The AWS region to deploy resources"
   type        = string
-  default     = "ap-south-1"
+  default     = "us-east-2"
 
 }
 variable "project_name" {
@@ -23,7 +23,7 @@ variable "instance_types" {
 variable "azs" {
   description = "List of availability zones to use for the VPC"
   type        = list(string)
-  default     = ["ap-south-1a", "ap-south-1b"]
+  default     = ["us-east-2a", "us-east-2b"]
 }
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
