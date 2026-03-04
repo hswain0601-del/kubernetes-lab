@@ -34,9 +34,11 @@ resource "aws_eks_node_group" "worker_node_group" {
 
   depends_on = [
     aws_eks_cluster.eks_cluster,
+    module.networking,
     aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.lb_controller_attach
   ]
 
 }
