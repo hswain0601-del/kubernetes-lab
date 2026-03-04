@@ -60,7 +60,10 @@ resource "kubernetes_ingress_v1" "alb" {
     }
   }
 
-  depends_on = [helm_release.lb_controller]
+  depends_on = [
+    helm_release.lb_controller,
+    aws_eks_node_group.worker_node_group
+  ]
 }
 
 output "alb_hostname" {
