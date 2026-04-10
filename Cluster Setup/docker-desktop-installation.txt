@@ -1,0 +1,19 @@
+Pre requisites:-
+Enable WSL (Windows Subsystem for Linux)
+Open Control Panel → Programs → Turn Windows features on or off.
+Check these boxes:
+Windows Subsystem for Linux
+Virtual Machine Platform
+Optional (for Pro/Enterprise): Hyper-V
+Click OK and reboot.
+
+Optional: Open Task Manager → Performance → CPU to confirm “Virtualization: Enabled”.
+
+Steps:-
+
+Download Docker Desktop exe file from link: https://docs.docker.com/desktop/setup/install/windows-install/
+If windows, open powershell in administration mode:-
+Command to run:- Start-Process 'Docker Desktop Installer.exe' -Wait install
+Once installation, create(SIGN UP) an account and sign in with credentials created in docker desktop
+
+Ref document:- https://docs.docker.com/desktop/setup/install/windows-install/
