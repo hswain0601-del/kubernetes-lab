@@ -75,18 +75,18 @@ To install the latest version, run:
 ```
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 docker --version
-usermod -aG docker ubuntu
+sudo usermod -aG docker ubuntu
 systemctl status docker
-systemctl enable docker
+sudo systemctl enable docker
 ```
 
 Kubernetes 1.30 requires that you use a runtime that conforms with the Container Runtime Interface (CRI).
 
 ```
 wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.17/cri-dockerd_0.3.17.3-0.ubuntu-bionic_amd64.deb
-apt install ./cri-dockerd_0.3.17.3-0.ubuntu-bionic_amd64.deb
+sudo apt install ./cri-dockerd_0.3.17.3-0.ubuntu-bionic_amd64.deb
 systemctl status cri-docker
-systemctl enable cri-docker
+sudo systemctl enable cri-docker
 ```
 
 1. Installing kubeadm, kubelet and kubectl
@@ -101,7 +101,7 @@ systemctl enable cri-docker
 2. Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
 ```	
-sudo apt-get update
+sudo apt-get update -y
 # apt-transport-https may be a dummy package; if so, you can skip that package
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 #Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL:
@@ -111,7 +111,7 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --
 #Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.30
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 #Update the apt package index, install kubelet, kubeadm and kubectl, and pin their version:
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 #(Optional) Enable the kubelet service before running kubeadm:
