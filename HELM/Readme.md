@@ -10,6 +10,9 @@ This Helm chart provides a simple way to deploy a NodeJS application.
 
 ## Installation
 
+Refer doc: https://helm.sh/docs/intro/install
+
+
 ### Clone the Repository
 
 ```bash
