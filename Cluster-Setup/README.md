@@ -27,9 +27,9 @@ Before starting the installation process, ensure that the following prerequisite
 10256	kube-proxy
 30000-32767	NodePort Services
 ```
-## Installation Steps: 
+## Installation Steps (BOTH Master & Node): 
 The following are the step-by-step instructions for setting up a multi-node Kubernetes cluster using Kubeadm and 
-this installation guide is for Kubernetes v1.30.
+this installation guide is for Kubernetes v1.35.
 Update the system's package list and install necessary dependencies using the following commands:
 
 Switch to the root user:
@@ -80,7 +80,7 @@ systemctl status docker
 systemctl enable docker
 ```
 
-Kubernetes 1.30 requires that you use a runtime that conforms with the Container Runtime Interface (CRI).
+Kubernetes 1.35 requires that you use a runtime that conforms with the Container Runtime Interface (CRI).
 
 ```
 wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.17/cri-dockerd_0.3.17.3-0.ubuntu-bionic_amd64.deb
@@ -97,7 +97,7 @@ systemctl enable cri-docker
 
 **NOTE:**
 
-1. These instructions are for Kubernetes v1.30.
+1. These instructions are for Kubernetes v1.35.
 2. Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
 ```	
@@ -107,9 +107,9 @@ sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 #Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL:
 # If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
 # sudo mkdir -p -m 755 /etc/apt/keyrings
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-#Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.30
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.35/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+#Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.35
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 #Update the apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
