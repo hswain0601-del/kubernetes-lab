@@ -21,11 +21,8 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: nginx-config
-          mountPath: /etc/nginx/nginx.conf
+          mountPath: /usr/local/openresty/nginx/conf/nginx.conf
           subPath: nginx.conf
-        - name: auth
-          mountPath: /etc/nginx/.htpasswd
-          subPath: .htpasswd
 
       # 🟢 TODO APP
       - name: todo-app
@@ -56,6 +53,3 @@ spec:
       - name: nginx-config
         configMap:
           name: {{ include "todo.fullname" . }}-nginx-config
-      - name: auth
-        secret:
-          secretName: {{ include "todo.fullname" . }}-basic-auth
