@@ -63,7 +63,7 @@ http://localhost:<NodePort>
 To uninstall the Helm chart:
 
 ```bash
-helm uninstall wanderlast
+helm uninstall todo
 ```
 
 ## Additional Labs
