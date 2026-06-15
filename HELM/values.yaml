@@ -5,7 +5,7 @@ todoApp:
   port: 3000
 
 nginx:
-  image: nginx:alpine
+  image: openresty/openresty:alpine
 
 mysql:
   image: mysql:8.0
