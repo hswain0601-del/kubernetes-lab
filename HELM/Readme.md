@@ -102,7 +102,7 @@ SHOW TABLES;
 - Add a manual entry - any items from the frontend
 
 ```bash
-SELECT * FROM todos;
+SELECT * FROM todos_items;
 ```
 
 ## Cleanup
