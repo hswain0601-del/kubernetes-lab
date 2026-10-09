@@ -94,6 +94,24 @@ NAME                 STATUS   ROLES           AGE   VERSION
 kind-control-plane   Ready    control-plane   2m    v1.37.0
 ```
 
+#### Other userfull commands
+
+```bash
+kubectl cluster-info
+```
+
+```bash
+kubectl get node -o wide
+```
+
+```bash
+kubectl get --raw='/readyz?verbose'
+```
+
+```bash
+kubectl get componentstatus
+```
+
 ## Delete kind cluster
 ```bash
 kind delete cluster --name local-cluster
