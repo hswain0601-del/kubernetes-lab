@@ -59,6 +59,13 @@ kind create cluster --config ./kind-cluster-config.yaml
 ```bash
 kubectl config view
 ```
+available/generated at the location
+- **for Windows:**
+Location: `C:\Users\<Username>\.kube\config`
+
+- **for MacOS and Linux:**
+Location: `~/.kube/config`
+
 Output:
 
 ```
